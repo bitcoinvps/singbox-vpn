@@ -1,4 +1,4 @@
-# Installing Sing-Box: The Swiss Army Knife of Proxy Services
+# Sing-Box: The Swiss Army Knife of Proxy Services
 
   
 
