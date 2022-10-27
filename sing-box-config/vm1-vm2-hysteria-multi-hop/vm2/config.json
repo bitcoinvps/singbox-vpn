@@ -1,0 +1,44 @@
+{
+	"log": {
+		"disabled": false,
+		"level": "info",
+		"timestamp": true
+	},
+	"inbounds": [{
+		"type": "hysteria",
+		"tag": "hysteria-in",
+		"listen": "::",
+		"listen_port": 443,
+		"tcp_fast_open": false,
+		"udp_fragment": true,
+		"proxy_protocol": false,
+		"proxy_protocol_accept_no_header": false,
+		"up_mbps": 500,
+		"down_mbps": 500,
+		"auth_str": "8vUSmxFiV1zsNUb776KckA",
+		"max_conn_client": 2048,
+		"disable_mtu_discovery": false,
+		"tls": {
+			"enabled": true,
+			"server_name": "vm2.bitcoinvps.cloud",
+			"alpn": [
+				"h3"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"certificate_path": "",
+			"key_path": "",
+			"acme": {
+				"domain": ["vm2.bitcoinvps.cloud"],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@bitcoinvps.cloud",
+				"provider": "letsencrypt"
+			}
+		}
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}

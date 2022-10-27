@@ -1,0 +1,126 @@
+{
+	"log": {
+		"disabled": false,
+		"level": "info",
+		"timestamp": true
+	},
+	"inbounds": [{
+			"type": "mixed",
+			"tag": "mixed-in",
+			"listen": "127.0.0.1",
+			"listen_port": 1080,
+			"set_system_proxy": false
+		},
+		{
+			"type": "vmess",
+			"tag": "vmess-in",
+			"listen": "::",
+			"listen_port": 80,
+			"sniff_timeout": "300ms",
+			"udp_timeout": 300,
+			"sniff": true,
+			"sniff_override_destination": true,
+			"tcp_fast_open": true,
+			"proxy_protocol": true,
+			"proxy_protocol_accept_no_header": true,
+			"users": [{
+				"name": "bitcoinvps.cloud",
+				"uuid": "35a79205-c162-4c84-a9f9-79a5fb3190c8",
+				"alterId": 0
+			}],
+
+			"transport": {
+				"type": "ws",
+				"path": "/stream"
+			}
+		}
+	],
+	"outbounds": [{
+			"type": "hysteria",
+			"tag": "hysteria-out",
+			"server": "vm2.bitcoinvps.cloud",
+			"server_port": 443,
+			"up_mbps": 500,
+			"down_mbps": 500,
+			"auth_str": "8vUSmxFiV1zsNUb776KckA",
+			"disable_mtu_discovery": false,
+			"tls": {
+				"enabled": true,
+				"disable_sni": false,
+				"server_name": "vm2.bitcoinvps.cloud",
+				"insecure": false,
+				"alpn": [
+					"h3"
+				]
+			},
+			"connect_timeout": "5s",
+			"tcp_fast_open": false,
+			"udp_fragment": true
+		},
+		{
+			"type": "direct",
+			"tag": "direct"
+		},
+		{
+			"type": "block",
+			"tag": "block"
+		}
+	],
+	"route": {
+		"rules": [
+
+			{
+				"geosite": "category-ads-all",
+				"outbound": "block"
+			}, {
+				"ip_cidr": [
+					"10.10.34.0/24"
+				],
+				"outbound": "block"
+			},
+			{
+				"domain": ["0192.dpdonya.com",
+					"ztsco.com",
+					"ztsfa.bankteb.com",
+					"zuperi.com",
+					"zzzagros.com",
+					"zarpop.com"
+				],
+				"outbound": "direct"
+			},
+			{
+				"domain_keyword": ["24d.ir",
+					"adengine.telewebion.com",
+					"adexo.ir",
+					"yelloadwise.ir",
+					"yoozbit.com",
+					"zanboor.net",
+					"zarpop.com"
+				],
+				"outbound": "block"
+			}, {
+				"domain_suffix": [
+					"cn"
+				],
+				"outbound": "direct"
+			},
+			{
+				"geoip": "cn",
+				"geosite": "cn",
+				"outbound": "direct"
+			}
+		],
+		"geoip": {
+			"path": "geoip.db",
+			"download_url": "https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db",
+			"download_detour": "direct"
+		},
+		"geosite": {
+			"path": "geosite.db",
+			"download_url": "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db",
+			"download_detour": "direct"
+		},
+
+		"final": "hysteria-out"
+	}
+}
