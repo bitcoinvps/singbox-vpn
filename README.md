@@ -1,6 +1,7 @@
 
 # Installing Sing-Box: The Swiss Army Knife of Proxy Services
-  
+
+Take a look at [gzxhwq/sing-box](https://hub.docker.com/r/gzxhwq/sing-box) if you prefer docker. Use [our configurations](https://github.com/bitcoinvps/sing-box-easy/tree/main/sing-box-config) in combination.
   
 1. ## Installing gcc is the first step:
 ```
