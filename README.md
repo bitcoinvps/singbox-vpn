@@ -71,7 +71,7 @@ Wants=network.target
 [Service]
 Type=simple
 ExecStart=sing-box run -c /etc/sing-box/config.json
-Restart=on-failure
+Restart=always
 RestartSec=3s
 RestartPreventExitStatus=23
 LimitNPROC=10000
