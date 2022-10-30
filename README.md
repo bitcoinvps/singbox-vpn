@@ -18,7 +18,7 @@ source /root/.bashrc
 3. ## Run the following command to install the latest dev version of sing-box:
   
 ```
-go install -v -tags "with_acme with_clash_api with_grpc with_quic with_wireguard with_ech with_utls with_gvisor with_shadowsocksr" github.com/sagernet/sing-box/cmd/sing-box@dev-next
+go install -v -tags "with_acme with_ech with_quic with_utls with_v2ray_api with_clash_api with_gvisor with_lwip with_grpc with_quic with_wireguard with_ech with_utls with_gvisor with_shadowsocksr" github.com/sagernet/sing-box/cmd/sing-box@dev-next
 ```
   
 4. ## Allow a normal user to run sing-box:
