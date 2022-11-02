@@ -10,8 +10,6 @@
             "listen": "::",
             "listen_port": 80,
             "tcp_fast_open": true,
-            "proxy_protocol": true,
-            "proxy_protocol_accept_no_header": true,
             "users": [{
                     "name": "bitcoinvps.cloud",
                     "uuid": "3ba295b2-5336-40fa-bfc8-69487d169b61",
