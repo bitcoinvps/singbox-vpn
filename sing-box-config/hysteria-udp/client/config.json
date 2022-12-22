@@ -16,7 +16,7 @@
 			},
 			{
 				"tag": "google",
-				"address": "udp://8.8.8.8"
+				"address": "tls://8.8.8.8"
 			}, {
 				"tag": "block",
 				"address": "rcode://success"
