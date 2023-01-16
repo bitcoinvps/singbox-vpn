@@ -1,0 +1,17 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"inbounds": [{
+		"type": "shadowsocks",
+		"tag": "shadowsocks-in",
+		"listen": "::",
+		"listen_port": 5353,
+		"method": "2022-blake3-aes-128-gcm",
+		"password": "8JCsPssfgS8tiRwiMlhARg=="
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}

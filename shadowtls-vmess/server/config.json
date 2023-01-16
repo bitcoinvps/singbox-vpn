@@ -1,0 +1,28 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"inbounds": [{
+		"type": "shadowtls",
+		"listen": "::",
+		"listen_port": 8443,
+		"handshake": {
+			"server": "www.wikimedia.org",
+			"server_port": 443
+		},
+		"detour": "vmess-in"
+	}, {
+		"type": "vmess",
+		"tag": "vmess-in",
+		"listen": "127.0.0.1",
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"uuid": "18543660-1aa6-49bc-8be6-f6dfc7e87de0",
+			"alterId": 0
+		}]
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}

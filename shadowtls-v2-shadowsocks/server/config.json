@@ -1,0 +1,27 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"inbounds": [{
+		"type": "shadowtls",
+		"listen": "::",
+		"listen_port": 4443,
+		"version": 2,
+		"password": "woman life liberty",
+		"handshake": {
+			"server": "google.com",
+			"server_port": 443
+		},
+		"detour": "shadowsocks-in"
+	}, {
+		"type": "shadowsocks",
+		"tag": "shadowsocks-in",
+		"listen": "127.0.0.1",
+		"method": "2022-blake3-aes-128-gcm",
+		"password": "8JCsPssfgS8tiRwiMlhARg=="
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}

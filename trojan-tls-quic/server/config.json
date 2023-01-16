@@ -1,0 +1,41 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"inbounds": [{
+		"type": "trojan",
+		"tag": "trojan-tls-quic-in",
+		"listen": "::",
+		"listen_port": 8880,
+		"udp_timeout": 300,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"password": "yemufratad9YlYuwaBrA"
+		}],
+		"tls": {
+			"enabled": true,
+			"server_name": "subdomain.example.com",
+			"alpn": [
+				"http/1.1"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"acme": {
+				"domain": [
+					"subdomain.example.com"
+				],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@example.com",
+				"provider": "letsencrypt"
+			}
+		},
+		"transport": {
+			"type": "quic"
+		}
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}

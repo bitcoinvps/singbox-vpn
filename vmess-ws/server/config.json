@@ -1,0 +1,26 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"inbounds": [{
+		"type": "vmess",
+		"tag": "vmess-ws-in",
+		"listen": "::",
+		"listen_port": 80,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"uuid": "3c1890e2-c768-4247-8a3b-032f6ed13a64",
+			"alterId": 0
+		}],
+		"transport": {
+			"type": "ws",
+			"path": "/stream",
+			"max_early_data": 0,
+			"early_data_header_name": "Sec-WebSocket-Protocol"
+		}
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}

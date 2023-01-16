@@ -1,0 +1,124 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"dns": {
+		"servers": [{
+				"tag": "local",
+				"address": "217.218.127.127",
+				"detour": "direct"
+			},
+			{
+				"tag": "google",
+				"address": "tls://8.8.8.8"
+			}, {
+				"tag": "block",
+				"address": "rcode://success"
+			}
+		],
+		"rules": [{
+			"geosite": "category-ads-all",
+			"server": "block"
+		}, {
+			"domain_suffix": ".ir",
+			"server": "local"
+		}],
+		"final": "google",
+		"strategy": "prefer_ipv4",
+		"disable_cache": false,
+		"disable_expire": false
+	},
+	"inbounds": [{
+		"type": "mixed",
+		"tag": "mixed-in",
+		"listen": "127.0.0.1",
+		"listen_port": 1080,
+		"tcp_fast_open": true,
+		"sniff": true,
+		"sniff_override_destination": true,
+		"set_system_proxy": false
+	}, {
+		"type": "tun",
+		"tag": "tun-in",
+		"interface_name": "tun0",
+		"inet4_address": "172.19.0.1/30",
+		"inet6_address": "fdfe:dcba:9876::1/128",
+		"stack": "gvisor",
+		"mtu": 9000,
+		"auto_route": true,
+		"strict_route": false,
+		"endpoint_independent_nat": false,
+		"sniff": true,
+		"sniff_override_destination": true
+	}],
+	"outbounds": [{
+			"type": "trojan",
+			"tag": "trojan-out",
+			"password": "talosliphe",
+			"detour": "shadowtls-out"
+		}, {
+			"type": "shadowtls",
+			"tag": "shadowtls-out",
+			"server": "SERVER-IP-ADDRESS",
+			"server_port": 8443,
+			"version": 2,
+			"password": "woman life liberty",
+			"tls": {
+				"enabled": true,
+				"server_name": "www.wikimedia.org"
+			}
+		},
+		{
+			"type": "direct",
+			"tag": "direct"
+		}, {
+			"type": "block",
+			"tag": "block"
+		},
+		{
+			"type": "dns",
+			"tag": "dns-out"
+		}
+	],
+	"route": {
+		"geoip": {
+			"path": "geoip.db",
+			"download_url": "https://raw.githubusercontent.com/CHIZI-0618/v2ray-rules-dat/release/geoip.db",
+			"download_detour": "direct"
+		},
+		"geosite": {
+			"path": "geosite.db",
+			"download_url": "https://github.com/yangchuansheng/sing-geosite/releases/latest/download/geosite.db",
+			"download_detour": "direct"
+		},
+		"rules": [{
+				"protocol": "dns",
+				"outbound": "dns-out"
+			}, {
+				"geosite": "category-ads-all",
+				"domain_keyword": [
+					"yektanet",
+					"adengine.telewebion.com"
+				],
+				"outbound": "block"
+			},
+			{
+				"geoip": "private",
+				"domain_suffix": [
+					".ir",
+					"aparat.com",
+					"digikala.com",
+					"telewebion.com",
+					"varzesh3.com"
+				],
+				"port": [
+					22,
+					3389
+				],
+				"outbound": "direct"
+			}
+		],
+		"final": "trojan-out",
+		"auto_detect_interface": true
+	}
+}

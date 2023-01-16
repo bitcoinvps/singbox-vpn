@@ -1,0 +1,27 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"inbounds": [{
+		"type": "shadowtls",
+		"listen": "::",
+		"listen_port": 8443,
+		"handshake": {
+			"server": "www.wikimedia.org",
+			"server_port": 443
+		},
+		"detour": "trojan-in"
+	}, {
+		"type": "trojan",
+		"tag": "trojan-in",
+		"listen": "127.0.0.1",
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"password": "talosliphe"
+		}]
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}
