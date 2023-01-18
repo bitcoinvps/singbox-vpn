@@ -1,0 +1,222 @@
+{
+	"log": {
+		"level": "trace"
+	},
+	"inbounds": [{
+		"type": "trojan",
+		"tag": "trojan-tls-in",
+		"listen": "127.0.0.1",
+		"listen_port": 52000,
+		"tcp_fast_open": true,
+		"udp_fragment": true,
+		"udp_timeout": 300,
+		"proxy_protocol": true,
+		"proxy_protocol_accept_no_header": false,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"password": "Xa79c9adrudlqoq10afr"
+		}],
+		"tls": {
+			"enabled": true,
+			"server_name": "trojan.example.com",
+			"alpn": [
+				"http/1.1"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"acme": {
+				"domain": [
+					"trojan.example.com"
+				],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@example.com",
+				"provider": "letsencrypt"
+			}
+		}
+	}, {
+		"type": "trojan",
+		"tag": "trojan-ws-in",
+		"listen": "127.0.0.1",
+		"listen_port": 52001,
+		"tcp_fast_open": true,
+		"udp_fragment": true,
+		"udp_timeout": 300,
+		"proxy_protocol": true,
+		"proxy_protocol_accept_no_header": false,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"password": "yemufratad9YlYuwaBrA"
+		}],
+		"tls": {
+			"enabled": true,
+			"server_name": "trojan-ws.example.com",
+			"alpn": [
+				"http/1.1"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"acme": {
+				"domain": [
+					"trojan-ws.example.com"
+				],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@example.com",
+				"provider": "letsencrypt"
+			}
+		},
+		"transport": {
+			"type": "ws",
+			"path": "/tv",
+			"max_early_data": 0,
+			"early_data_header_name": "Sec-WebSocket-Protocol"
+		}
+	}, {
+		"type": "trojan",
+		"tag": "trojan-ws-6-in",
+		"listen": "127.0.0.1",
+		"listen_port": 52002,
+		"tcp_fast_open": true,
+		"udp_fragment": true,
+		"udp_timeout": 300,
+		"proxy_protocol": true,
+		"proxy_protocol_accept_no_header": false,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"password": "yemufratad9YlYuwaBrA"
+		}],
+		"tls": {
+			"enabled": true,
+			"server_name": "trojan-ws-6.example.com",
+			"alpn": [
+				"http/1.1"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"acme": {
+				"domain": [
+					"trojan-ws-6.example.com"
+				],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@example.com",
+				"provider": "letsencrypt"
+			}
+		},
+		"transport": {
+			"type": "ws",
+			"path": "/tv",
+			"max_early_data": 0,
+			"early_data_header_name": "Sec-WebSocket-Protocol"
+		}
+	}, {
+		"type": "vmess",
+		"tag": "vmess-tls-in",
+		"listen": "127.0.0.1",
+		"listen_port": 52003,
+		"tcp_fast_open": true,
+		"udp_fragment": true,
+		"proxy_protocol": true,
+		"proxy_protocol_accept_no_header": false,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"uuid": "18543660-1aa6-49bc-8be6-f6dfc7e87de0",
+			"alterId": 0
+		}],
+		"tls": {
+			"enabled": true,
+			"server_name": "vmess.example.com",
+			"alpn": [
+				"http/1.1"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"acme": {
+				"domain": [
+					"vmess.example.com"
+				],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@example.com",
+				"provider": "letsencrypt"
+			}
+		}
+	}, {
+		"type": "vmess",
+		"tag": "vmess-ws-in",
+		"listen": "127.0.0.1",
+		"listen_port": 52004,
+		"tcp_fast_open": true,
+		"udp_fragment": true,
+		"proxy_protocol": true,
+		"proxy_protocol_accept_no_header": false,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"uuid": "3c1890e2-c768-4247-8a3b-032f6ed13a64",
+			"alterId": 0
+		}],
+		"tls": {
+			"enabled": true,
+			"server_name": "vmess-ws.example.com",
+			"alpn": [
+				"http/1.1"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"acme": {
+				"domain": ["vmess-ws.example.com"],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@example.com",
+				"provider": "letsencrypt"
+			}
+		},
+		"transport": {
+			"type": "ws",
+			"path": "/stream",
+			"max_early_data": 0,
+			"early_data_header_name": "Sec-WebSocket-Protocol"
+		}
+	}, {
+		"type": "vmess",
+		"tag": "vmess-ws-6-in",
+		"listen": "127.0.0.1",
+		"listen_port": 52005,
+		"tcp_fast_open": true,
+		"udp_fragment": true,
+		"proxy_protocol": true,
+		"proxy_protocol_accept_no_header": false,
+		"users": [{
+			"name": "bitcoinvps.cloud",
+			"uuid": "3c1890e2-c768-4247-8a3b-032f6ed13a64",
+			"alterId": 0
+		}],
+		"tls": {
+			"enabled": true,
+			"server_name": "vmess-ws-6.example.com",
+			"alpn": [
+				"http/1.1"
+			],
+			"min_version": "1.2",
+			"max_version": "1.3",
+			"acme": {
+				"domain": ["vmess-ws-6.example.com"],
+				"data_directory": "/etc/sing-box",
+				"default_server_name": "",
+				"email": "singbox@example.com",
+				"provider": "letsencrypt"
+			}
+		},
+		"transport": {
+			"type": "ws",
+			"path": "/stream",
+			"max_early_data": 0,
+			"early_data_header_name": "Sec-WebSocket-Protocol"
+		}
+	}],
+	"outbounds": [{
+		"type": "direct",
+		"tag": "direct"
+	}]
+}
