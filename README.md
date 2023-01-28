@@ -8,4 +8,4 @@
 
 ## [Master the Sing-Box: A Guide to Essential Commands](https://vpnrouter.homes/commands/)
 
-## [Transform Your Home Network with Singbox: Use as Your VPN Router Gateway](https://vpnrouter.homes/home-vpn-router-setup/)
+## [Transform Your Home Network with Singbox VPN Router Gateway](https://vpnrouter.homes/home-vpn-router-setup/)
