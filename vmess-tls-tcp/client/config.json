@@ -10,7 +10,7 @@
 			},
 			{
 				"tag": "google",
-				"address": "tls://8.8.8.8"
+				"address": "udp://8.8.8.8"
 			}, {
 				"tag": "block",
 				"address": "rcode://success"
@@ -93,20 +93,26 @@
 	],
 	"route": {
 		"geoip": {
-			"path": "geoip.db",
-			"download_url": "https://raw.githubusercontent.com/CHIZI-0618/v2ray-rules-dat/release/geoip.db",
+			"download_url": "https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db",
 			"download_detour": "direct"
 		},
 		"geosite": {
-			"path": "geosite.db",
-			"download_url": "https://github.com/yangchuansheng/sing-geosite/releases/latest/download/geosite.db",
+			"download_url": "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db",
 			"download_detour": "direct"
 		},
 		"rules": [{
 				"protocol": "dns",
 				"outbound": "dns-out"
-			}, {
+			},
+			{
+				"geoip": "private",
+				"outbound": "direct"
+			},
+			{
 				"geosite": "category-ads-all",
+				"outbound": "block"
+			},
+			{
 				"domain_keyword": [
 					"yektanet",
 					"adengine.telewebion.com"
@@ -114,7 +120,6 @@
 				"outbound": "block"
 			},
 			{
-				"geoip": "private",
 				"domain_suffix": [
 					".ir",
 					"aparat.com",
@@ -122,6 +127,9 @@
 					"telewebion.com",
 					"varzesh3.com"
 				],
+				"outbound": "direct"
+			},
+			{
 				"port": [
 					22,
 					3389
